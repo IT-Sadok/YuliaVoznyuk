@@ -11,6 +11,5 @@ namespace BookingSystem.Domain
     {
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
-        public UserRole Role { get; set; }
     }
 }

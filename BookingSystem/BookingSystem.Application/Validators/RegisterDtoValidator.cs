@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookingSystem.API.DTOs;
 
 namespace BookingSystem.Application.Validators
 {
@@ -16,7 +17,6 @@ namespace BookingSystem.Application.Validators
             RuleFor(x => x.Password).NotEmpty().MinimumLength(6);
             RuleFor(x => x.FirstName).NotEmpty();
             RuleFor(x => x.LastName).NotEmpty();
-            RuleFor(x => x.Role).IsInEnum();
         }
     }
 }

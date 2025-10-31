@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BookingSystem.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,17 +64,3 @@ app.UseAuthorization();
 app.MapControllers();
 await SeedData.EnsureRolesAsync(app.Services);
 app.Run();
-public static class SeedData
-{
-    public static async Task EnsureRolesAsync(IServiceProvider services)
-    {
-        using var scope = services.CreateScope();
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
-
-        foreach (var role in new[] { "Client", "Host", "Admin" })
-        {
-            if (!await roleManager.RoleExistsAsync(role))
-                await roleManager.CreateAsync(new IdentityRole<Guid>(role));
-        }
-    }
-}
